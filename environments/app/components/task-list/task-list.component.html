@@ -1,0 +1,14 @@
+<div class="gradient-header">
+  <h2>My Tasks</h2>
+</div>
+<div class="card">
+  <div *ngIf="error" class="error">{{ error }}</div>
+  <div *ngIf="loading">Loading...</div>
+  <ul *ngIf="!loading">
+    <li *ngFor="let task of tasks">
+      <strong>{{ task.title }}</strong> - {{ task.status }} - {{ task.priority }} - Due: {{ task.dueDate | date }}
+      <button (click)="editTask(task.id)">Edit</button>
+      <button (click)="deleteTask(task.id)">Delete</button>
+    </li>
+  </ul>
+</div> 

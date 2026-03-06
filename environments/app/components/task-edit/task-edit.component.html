@@ -1,0 +1,38 @@
+<div class="card">
+  <div class="gradient-header">
+    <h2>{{ isEdit ? 'Edit Task' : 'Add Task' }}</h2>
+  </div>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div *ngIf="error" class="error">{{ error }}</div>
+    <div>
+      <label>Title</label>
+      <input formControlName="title" />
+    </div>
+    <div>
+      <label>Description</label>
+      <input formControlName="description" />
+    </div>
+    <div>
+      <label>Status</label>
+      <select formControlName="status">
+        <option value="Todo">Todo</option>
+        <option value="InProgress">In Progress</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+    <div>
+      <label>Priority</label>
+      <select formControlName="priority">
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+    <div>
+      <label>Due Date</label>
+      <input type="date" formControlName="dueDate" />
+    </div>
+    <button type="submit" [disabled]="loading">{{ isEdit ? 'Update' : 'Add' }}</button>
+    <div *ngIf="loading">Saving...</div>
+  </form>
+</div> 
