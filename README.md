@@ -1,77 +1,59 @@
-# Task Manager API
+# Angular
 
-This is the backend API for the Task Manager application. It provides endpoints for user authentication and task management.
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
 
-## Prerequisites
+## Development server
 
-- .NET 6.0 SDK or later
-- SQL Server (LocalDB or Express)
-- Visual Studio 2022 or Visual Studio Code
+To start a local development server, run:
 
-## Setup Instructions
+```bash
+ng serve
+```
 
-1. **Install Required NuGet Packages**
-   ```bash
-   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
-   dotnet add package Microsoft.EntityFrameworkCore.Tools
-   dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
-   dotnet add package BCrypt.Net-Next
-   ```
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-2. **Update Database Connection**
-   - Open `appsettings.json`
-   - Update the `DefaultConnection` string with your SQL Server details
+## Code scaffolding
 
-3. **Create Database**
-   ```bash
-   dotnet ef migrations add InitialCreate
-   dotnet ef database update
-   ```
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-4. **Run the Application**
-   ```bash
-   dotnet run
-   ```
+```bash
+ng generate component component-name
+```
 
-## API Endpoints
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-### Authentication
-- POST `/api/auth/register` - Register a new user
-- POST `/api/auth/login` - Login and get JWT token
+```bash
+ng generate --help
+```
 
-### Tasks
-- GET `/api/task` - Get all tasks for the current user
-- GET `/api/task/{id}` - Get a specific task
-- POST `/api/task` - Create a new task
-- PUT `/api/task/{id}` - Update a task
-- DELETE `/api/task/{id}` - Delete a task
-- GET `/api/task/status/{status}` - Get tasks by status
-- GET `/api/task/pending` - Get pending tasks
-- GET `/api/task/completed` - Get completed tasks
+## Building
 
-## Database Schema
+To build the project run:
 
-### Users Table
-- Id (Primary Key)
-- Email (Unique)
-- PasswordHash
-- FirstName
-- LastName
-- CreatedAt
+```bash
+ng build
+```
 
-### Tasks Table
-- Id (Primary Key)
-- Title
-- Description
-- Priority
-- Status
-- DueDate
-- CreatedAt
-- CompletedAt
-- UserId (Foreign Key)
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Security
+## Running unit tests
 
-- Passwords are hashed using BCrypt
-- JWT authentication for API endpoints
-- CORS enabled for Angular frontend (localhost:4200) 
+To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
